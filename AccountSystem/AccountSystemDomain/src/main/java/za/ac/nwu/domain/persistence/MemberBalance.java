@@ -14,22 +14,22 @@ public class MemberBalance implements Serializable
 
     private AccountType accountType;
 
-    private Long memberId;
-
-    private Long accountTypeId;
+    private Member member;
 
     private Long balance;
 
     private LocalDate dateOfLastTransaction;
     //DATE_OF_LAST_TRANSACTON
 
-    public MemberBalance() {
+    public MemberBalance()
+    {
     }
 
-    public MemberBalance(Long balanceId, AccountType accountType, Long memberId, Long balance, LocalDate dateOfLastTransaction) {
+    public MemberBalance(Long balanceId, AccountType accountType, Member member, Long balance, LocalDate dateOfLastTransaction)
+    {
         this.balanceId = balanceId;
         this.accountType = accountType;
-        this.memberId = memberId;
+        this.member = member;
         this.balance = balance;
         this.dateOfLastTransaction = dateOfLastTransaction;
     }
@@ -38,44 +38,54 @@ public class MemberBalance implements Serializable
     @SequenceGenerator(name = "MEMBER_BALANCE_SEQ", sequenceName = "CMPG323.MEMBER_BALANCE_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_BALANCE_SEQ")
     @Column(name = "BALANCE_ID")
-    public Long getBalanceId() {
+    public Long getBalanceId()
+    {
         return balanceId;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_TYPE_ID")
-    public AccountType getAccountType() {
+    public AccountType getAccountType()
+    {
         return accountType;
     }
 
-    @Column (name = "MEMBER_ID")
-    public Long getMemberId() {
-        return memberId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn (name = "MEMBER_ID")
+    public Member getMember()
+    {
+        return member;
     }
 
     @Column (name = "BALANCE")
-    public Long getBalance() {
+    public Long getBalance()
+    {
         return balance;
     }
 
     @Column (name = "DATE_OF_LAST_TRANSACTON")
-    public LocalDate getDateOfLastTransaction() {
+    public LocalDate getDateOfLastTransaction()
+    {
         return dateOfLastTransaction;
     }
 
-    public void setBalanceId(Long balanceId) {
+    public void setBalanceId(Long balanceId)
+    {
         this.balanceId = balanceId;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(AccountType accountType)
+    {
         this.accountType = accountType;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member)
+    {
+        this.member = member;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(Long balance)
+    {
         this.balance = balance;
     }
 
@@ -84,24 +94,27 @@ public class MemberBalance implements Serializable
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MemberBalance that = (MemberBalance) o;
-        return Objects.equals(balanceId, that.balanceId) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(balance, that.balance) && Objects.equals(dateOfLastTransaction, that.dateOfLastTransaction);
+        return Objects.equals(balanceId, that.balanceId) && Objects.equals(accountType, that.accountType) && Objects.equals(member, that.member) && Objects.equals(balance, that.balance) && Objects.equals(dateOfLastTransaction, that.dateOfLastTransaction);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(balanceId, accountType, memberId, balance, dateOfLastTransaction);
+    public int hashCode()
+    {
+        return Objects.hash(balanceId, accountType, member, balance, dateOfLastTransaction);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Member balance{" +
                 "accountTxId=" + balanceId +
                 ", accountType=" + accountType +
-                ", memberId=" + memberId +
+                ", member=" + member +
                 ", amount=" + balance +
                 ", transactionDate=" + dateOfLastTransaction +
                 '}';

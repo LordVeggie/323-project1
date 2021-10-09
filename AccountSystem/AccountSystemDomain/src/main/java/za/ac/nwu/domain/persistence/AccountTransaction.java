@@ -15,7 +15,7 @@ public class AccountTransaction implements Serializable{
 
     private AccountType accountType;
 
-    private Long memberId;
+    private Member member;
 
     private Long amount;
 
@@ -24,10 +24,10 @@ public class AccountTransaction implements Serializable{
     public AccountTransaction() {
     }
 
-    public AccountTransaction(Long accountTxId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransaction(Long accountTxId, AccountType accountType, Member member, Long amount, LocalDate transactionDate) {
         this.accountTxId = accountTxId;
         this.accountType = accountType;
-        this.memberId = memberId;
+        this.member = member;
         this.amount = amount;
         this.transactionDate = transactionDate;
     }
@@ -36,70 +36,84 @@ public class AccountTransaction implements Serializable{
     @SequenceGenerator(name = "DEMO_ACCOUNT_TX_GENERIC_SEQ", sequenceName = "CMPG323.DEMO_ACCOUNT_TX_GENERIC_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DEMO_ACCOUNT_TX_GENERIC_SEQ")
     @Column(name = "ACCOUNT_TX_ID")
-    public Long getAccountTxId() {
+    public Long getAccountTxId()
+    {
         return accountTxId;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_TYPE_ID")
-    public AccountType getAccountType() {
+    public AccountType getAccountType()
+    {
         return accountType;
     }
 
-    @Column (name = "MEMBER_ID")
-    public Long getMemberId() {
-        return memberId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    public Member getMember()
+    {
+        return member;
     }
 
     @Column (name = "AMOUNT")
-    public Long getAmount() {
+    public Long getAmount()
+    {
         return amount;
     }
 
     @Column (name = "TX_DATE")
-    public LocalDate getTransactionDate() {
+    public LocalDate getTransactionDate()
+    {
         return transactionDate;
     }
 
-    public void setAccountTxId(Long accountTxId) {
+    public void setAccountTxId(Long accountTxId)
+    {
         this.accountTxId = accountTxId;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(AccountType accountType)
+    {
         this.accountType = accountType;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member)
+    {
+        this.member = member;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(Long amount)
+    {
         this.amount = amount;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(LocalDate transactionDate)
+    {
         this.transactionDate = transactionDate;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(accountTxId, that.accountTxId) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(accountTxId, that.accountTxId) && Objects.equals(accountType, that.accountType) && Objects.equals(member, that.member) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(accountTxId, accountType, memberId, amount, transactionDate);
+    public int hashCode()
+    {
+        return Objects.hash(accountTxId, accountType, member, amount, transactionDate);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "AccountTransaction{" +
                 "accountTxId=" + accountTxId +
                 ", accountType=" + accountType +
-                ", memberId=" + memberId +
+                ", member=" + member +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +
                 '}';
