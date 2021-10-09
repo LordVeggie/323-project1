@@ -112,7 +112,7 @@ public class MemberBalance implements Serializable
     public String toString()
     {
         return "Member balance{" +
-                "accountTxId=" + balanceId +
+                "balanceId=" + balanceId +
                 ", accountType=" + accountType +
                 ", member=" + member +
                 ", amount=" + balance +

@@ -23,6 +23,8 @@ public class Member implements Serializable
 
     private Set<MemberBalance> memberBalances;
 
+    private Set<AccountTransaction> accountTransactions;
+
     public Member()
     {
     }
@@ -112,6 +114,17 @@ public class Member implements Serializable
     public void setMemberBalances(Set<MemberBalance> memberBalances)
     {
         this.memberBalances = memberBalances;
+    }
+
+    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    public Set<AccountTransaction> getAccountTransactions()
+    {
+        return accountTransactions;
+    }
+
+    public void setAccountTransactions(Set<AccountTransaction> accountTransactions)
+    {
+        this.accountTransactions = accountTransactions;
     }
 
     @Override
