@@ -7,6 +7,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "DEMO_ACCOUNT_TX", schema = "CMPG323")
+//this is used to record all transactions that accrue that affect the balances of the different account
+//types of all users
 public class AccountTransaction implements Serializable{
 
     private Long accountTxId;

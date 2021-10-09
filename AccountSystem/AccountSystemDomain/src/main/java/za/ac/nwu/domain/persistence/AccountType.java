@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "DEMO_ACCOUNT_TYPE", schema = "CMPG323")
+//Used to record all the different types of currency's and when they were created
 public class AccountType implements Serializable{
 
     private Long accountTypeId;
