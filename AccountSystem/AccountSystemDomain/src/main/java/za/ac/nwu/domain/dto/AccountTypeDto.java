@@ -12,7 +12,8 @@ import java.util.Objects;
 
 
 @ApiModel(value = "AccountType", description = "A DTO that represents the AccountType")
-public class AccountTypeDto implements Serializable{
+public class AccountTypeDto implements Serializable
+{
 
     private String mnemonic;
     private String accountTypeName;

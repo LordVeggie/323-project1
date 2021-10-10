@@ -7,7 +7,8 @@ import za.ac.nwu.domain.persistence.AccountType;
 import za.ac.nwu.domain.dto.AccountTypeDto;
 
 @Repository
-public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
+public interface AccountTypeRepository extends JpaRepository<AccountType, Long>
+{
 
     @Query(value = "SELECT "+
             "       ACCOUNT_TYPE_ID,"+
@@ -18,6 +19,8 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
             "       CMPG323.DEMO_ACCOUNT_TYPE"+
             "       WHERE MNEMONIC = :mnemonic ",nativeQuery = true)
     AccountType getAccountByMnemonicNativeQuery(String mnemonic);
+
+    //the one i wanna recreate over and over
 
     @Query(value = "SELECT "+
             "       at"+

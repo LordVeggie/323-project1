@@ -13,7 +13,8 @@ import java.util.List;
 
 @Transactional
 @Component
-public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow {
+public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow
+{
     private final AccountTypeTranslator accountTypeTranslator;
 
     @Autowired
